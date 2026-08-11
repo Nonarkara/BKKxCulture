@@ -1,0 +1,43 @@
+{
+  "id": "bangkok-historic-core-java",
+  "title": "Bangkok · Historic Core",
+  "edition": "Minecraft Java Edition",
+  "minecraft_version": "1.21.4+",
+  "generator": {
+    "name": "Arnis",
+    "version": "3.0.0",
+    "repository": "https://github.com/louis-e/arnis",
+    "release_archive_sha256": "6ef82e075f022e20119a96dc52d2605f607807558b43dba1ca22c67a328bd951"
+  },
+  "generated_at": "2026-08-03T22:25:51+07:00",
+  "geography": {
+    "name": "Bangkok Historic Core and adjacent Thonburi riverfront",
+    "bounds": {
+      "min_lat": 13.737134,
+      "min_lon": 100.478897,
+      "max_lat": 13.766063,
+      "max_lon": 100.510225
+    },
+    "source_label_correction": "Previously labelled Ratchathewi; corrected from embedded geographic bounds."
+  },
+  "minecraft_bounds": {
+    "min_x": 0,
+    "max_x": 3383,
+    "min_z": 0,
+    "max_z": 3216
+  },
+  "scale_blocks_per_metre": 1.0,
+  "projection": "local",
+  "settings": {
+    "game_mode": "creative",
+    "map_preview": true,
+    "map_item": true,
+    "terrain_elevation": false
+  },
+  "validation": {
+    "region_files": 49,
+    "chunks": 50176,
+    "status": "passed"
+  },
+  "attribution": "Geographic data © OpenStreetMap contributors, ODbL 1.0; supplemental building data may include Overture Maps."
+}

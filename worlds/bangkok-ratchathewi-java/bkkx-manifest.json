@@ -1,0 +1,50 @@
+{
+  "id": "bangkok-ratchathewi-java",
+  "title": "Bangkok · Ratchathewi",
+  "edition": "Minecraft Java Edition",
+  "minecraft_version": "1.21.4+",
+  "generator": {
+    "name": "Arnis",
+    "version": "3.0.0",
+    "repository": "https://github.com/louis-e/arnis",
+    "release_archive_sha256": "6ef82e075f022e20119a96dc52d2605f607807558b43dba1ca22c67a328bd951"
+  },
+  "generated_at": "2026-08-04T03:17:53+07:00",
+  "geography": {
+    "name": "Ratchathewi District, Bangkok, Thailand",
+    "openstreetmap_relation": 92064,
+    "bounds": {
+      "min_lat": 13.7478553,
+      "min_lon": 100.5190372,
+      "max_lat": 13.7743399,
+      "max_lon": 100.5649221
+    },
+    "spawn": {
+      "lat": 13.7532229,
+      "lon": 100.5318599
+    }
+  },
+  "minecraft_bounds": {
+    "min_x": 0,
+    "max_x": 4955,
+    "min_z": 0,
+    "max_z": 2944
+  },
+  "scale_blocks_per_metre": 1.0,
+  "projection": "local",
+  "settings": {
+    "game_mode": "creative",
+    "world_time_ticks": 6000,
+    "map_preview": true,
+    "map_item": true,
+    "overture_buildings": true,
+    "external_3d_assets": true,
+    "terrain_elevation": false
+  },
+  "validation": {
+    "region_files": 60,
+    "chunks": 61440,
+    "status": "passed"
+  },
+  "attribution": "Geographic data © OpenStreetMap contributors, ODbL 1.0; supplemental building data from Overture Maps."
+}

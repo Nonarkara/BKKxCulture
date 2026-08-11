@@ -1,0 +1,57 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/.vinext/
+/out/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+next-env.d.ts
+*.tsbuildinfo
+/dist/
+/.wrangler/
+/outputs/
+/work/
+
+# Heritage register source pulls (8 MB CSV + Overpass dumps); rebuilt by
+# scripts/build-heritage-register.py --refresh
+.cache/
+
+# Minecraft world binaries — only the tiny manifest.json + level.dat
+# (spawn point) are needed here, to compute Minecraft teleport
+# coordinates for monuments that fall inside a world. The actual
+# generated worlds live in the BKKx repo and are distributed as
+# GitHub Releases there, not duplicated here.
+worlds/*/data/
+worlds/*/region/
+worlds/*/arnis_world_map.png
+worlds/*/icon.png

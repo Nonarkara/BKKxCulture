@@ -1,0 +1,1 @@
+CREATE INDEX `idx_pageviews_created_at` ON `pageviews` (`created_at`);
