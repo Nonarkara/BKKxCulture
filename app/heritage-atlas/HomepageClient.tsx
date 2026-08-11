@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { useLocale } from "../i18n/LocaleContext";
+import { LangToggle } from "../i18n/LangToggle";
+import { AREA_TH } from "../data/heritage-translations-th";
 
 type Quarter = {
   slug: string;
@@ -25,6 +28,8 @@ function heritageMapUrlFor(q: Quarter | null): string {
 }
 
 export function HomepageClient({ quarters, initialQuarter }: Props) {
+  const { t, locale } = useLocale();
+  const th = locale === "th";
   const [activeSlug, setActiveSlug] = useState<string | null>(initialQuarter ?? null);
   const [iframeKey, setIframeKey] = useState(0);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
@@ -42,40 +47,37 @@ export function HomepageClient({ quarters, initialQuarter }: Props) {
   return (
     <div className="atlas-shell">
       <header className="atlas-shell-masthead" aria-label="BKKx primary">
-        <Link className="register-wordmark" href="/" aria-label="BKKx home">
+        <Link className="register-wordmark" href="/" aria-label="BKKxC(ulture) home">
           <span>BKK</span>
           <b>x</b>
+          <em>C(ulture)</em>
         </Link>
         <div className="atlas-shell-masthead-meta">
           <span className="register-eyebrow">
             <span lang="th">กรุงเทพมหานคร · Bangkok</span>
           </span>
           <strong>Bangkok&apos;s heritage, block by block.</strong>
-          <small>
-            The 3D map is the front door. Nine quarters, seven walks, 571
-            registered monuments — pick a quarter and fly there.
-          </small>
+          <small>{t("front_door_tagline")}</small>
         </div>
         <nav className="atlas-shell-nav" aria-label="Heritage navigation">
-          <Link href="/heritage#register">Register</Link>
-          <Link href="/heritage#walks">Walks</Link>
+          <Link href="/heritage#register">{t("nav_register")}</Link>
+          <Link href="/heritage#walks">{t("nav_walks")}</Link>
+          <Link href="/about">{t("nav_about")}</Link>
+          <LangToggle />
         </nav>
       </header>
 
       <div className="atlas-shell-body">
         <aside className="atlas-shell-quarters" aria-label="Heritage quarters">
-          <p className="register-eyebrow">Quarters</p>
+          <p className="register-eyebrow">{t("nav_quarters")}</p>
           <h2 className="register-section-title atlas-shell-quarters-title">
-            Nine quarters of the old city
+            {t("home_quarters_heading")}
           </h2>
-          <p className="atlas-shell-quarters-lede">
-            From the royal island to the green lung. Click a quarter to fly
-            the map there. Each one is a hand-curated page with its
-            monuments, its walks and its own history.
-          </p>
+          <p className="atlas-shell-quarters-lede">{t("quarters_lede")}</p>
           <ol className="atlas-shell-quarter-chips">
             {quarters.map((q) => {
               const isActive = q.slug === activeSlug;
+              const tag = th ? AREA_TH[q.slug]?.tagline ?? q.tagline : q.tagline;
               return (
                 <li key={q.slug}>
                   <button
@@ -86,12 +88,12 @@ export function HomepageClient({ quarters, initialQuarter }: Props) {
                   >
                     <span className="atlas-shell-quarter-name">
                       {q.name}
-                      {q.thai ? (
-                        <small lang="th"> {q.thai}</small>
-                      ) : null}
+                      {q.thai ? <small lang="th"> {q.thai}</small> : null}
                     </span>
-                    {q.tagline ? (
-                      <span className="atlas-shell-quarter-tag">{q.tagline}</span>
+                    {tag ? (
+                      <span className="atlas-shell-quarter-tag" lang={th ? "th" : undefined}>
+                        {tag}
+                      </span>
                     ) : null}
                   </button>
                 </li>
@@ -99,10 +101,10 @@ export function HomepageClient({ quarters, initialQuarter }: Props) {
             })}
           </ol>
 
-          <p className="register-eyebrow atlas-shell-quarters-after">Source</p>
+          <p className="register-eyebrow atlas-shell-quarters-after">{t("home_source_label")}</p>
           <p className="atlas-shell-side">
             <a href="https://github.com/Nonarkara/BKKxCulture" target="_blank" rel="noreferrer">
-              Source on GitHub
+              {t("home_source_github")}
             </a>
           </p>
 

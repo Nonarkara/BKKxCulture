@@ -113,6 +113,17 @@ button {
   font-weight: 800;
 }
 
+.wordmark em {
+  margin-left: 7px;
+  align-self: flex-end;
+  padding-bottom: 3px;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
 .site-header nav {
   display: flex;
   gap: clamp(18px, 3vw, 42px);
@@ -1672,6 +1683,17 @@ footer small { grid-column: 1 / -1; margin-top: 60px; padding-top: 24px; border-
   font-weight: 700;
 }
 
+.register-wordmark em {
+  margin-left: 6px;
+  align-self: flex-end;
+  padding-bottom: 3px;
+  color: var(--quiet);
+  font-size: calc(var(--size-down) * 0.95);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
 .register-nav {
   display: flex;
   flex-wrap: wrap;
@@ -2392,9 +2414,12 @@ footer small { grid-column: 1 / -1; margin-top: 60px; padding-top: 24px; border-
 
 /* ---- walk pages ---- */
 
+/* Flex, not grid — Distance/On-foot are conditional on routing having
+   succeeded, so the item count isn't always 4; a fixed column grid would
+   leave the same dangling-background gap fixed in .walk-stats below. */
 .walk-facts {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1px;
   margin: var(--baseline) 0 0;
   max-width: 560px;
@@ -2404,6 +2429,7 @@ footer small { grid-column: 1 / -1; margin-top: 60px; padding-top: 24px; border-
 }
 
 .walk-facts > div {
+  flex: 1 1 140px;
   padding: var(--cap) 0 calc(var(--cap) * 1.2);
   background: var(--paper);
 }
@@ -2492,11 +2518,87 @@ footer small { grid-column: 1 / -1; margin-top: 60px; padding-top: 24px; border-
   color: var(--seal);
 }
 
-@media (min-width: 760px) {
-  .walk-facts {
-    grid-template-columns: repeat(4, 1fr);
-  }
+/* Real numbers only — Fine Arts gazette years and OSRM leg distances,
+   never estimated. Tabular figures so a column of them lines up. */
+.walk-stop-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--cap);
+  margin: 2px 0 0 !important;
+  color: var(--seal);
+  font-family: var(--font-mono);
+  font-size: var(--size-down);
+  font-variant-numeric: tabular-nums;
 }
+
+/* Two independent spans (gazette age, leg distance) can both render; a
+   visible separator only when there's a sibling before it to separate from. */
+.walk-stop-numbers span + span::before {
+  margin-right: var(--cap);
+  color: var(--quiet);
+  content: "·";
+}
+
+.walk-stats {
+  margin: calc(var(--page-unit) * 1.2) 0 0;
+  border-top: 1px solid var(--ink);
+  padding-top: var(--baseline);
+}
+
+.walk-stats h2 {
+  margin: 0 0 var(--cap);
+  font-family: var(--font-display);
+  font-size: var(--size-up);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Flex, not grid: the stat count varies per walk (a bike loop has no
+   register citations, a short walk has no leg-distance spread), and a
+   fixed column count leaves an empty, backdrop-coloured cell dangling
+   in the last row whenever the count doesn't divide evenly — an orphan
+   edge the Planar Alignment Law doesn't allow. */
+.walk-stats dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  max-width: 720px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  background: var(--rule);
+}
+
+.walk-stats dl > div {
+  flex: 1 1 200px;
+  padding: var(--cap) var(--cap) calc(var(--cap) * 1.2) 0;
+  background: var(--paper);
+}
+
+.walk-stats dt {
+  color: var(--quiet);
+  font-size: var(--size-down);
+  letter-spacing: 0.04em;
+}
+
+.walk-stats dd {
+  margin: 2px 0 0;
+  font-family: var(--font-display);
+  font-size: var(--size-up);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.walk-stats dd small {
+  display: block;
+  margin-top: 1px;
+  color: var(--quiet);
+  font-family: var(--font-body);
+  font-size: var(--size-down);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
 
 /* ─────────────────────────────────────────────────────────────────
  * atlas-shell — the new BKKx front door (2026-08-11).
@@ -2754,4 +2856,48 @@ footer small { grid-column: 1 / -1; margin-top: 60px; padding-top: 24px; border-
   .atlas-shell-map {
     min-height: 70vh;
   }
+}
+
+/* ---- language toggle (Editorial + Console mastheads share this) ---- */
+
+.lang-toggle {
+  display: inline-flex;
+  border: 1px solid currentColor;
+  opacity: 0.7;
+}
+
+.lang-toggle button {
+  min-height: 44px;
+  min-width: 40px;
+  border: 0;
+  background: transparent;
+  padding: 0 10px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.lang-toggle button + button {
+  border-left: 1px solid currentColor;
+}
+
+.lang-toggle button.is-active {
+  background: currentColor;
+}
+
+.register-nav .lang-toggle,
+.atlas-shell-nav .lang-toggle {
+  color: var(--ink);
+}
+
+.register-nav .lang-toggle button.is-active,
+.atlas-shell-nav .lang-toggle button.is-active {
+  color: var(--paper);
+}
+
+.wordmark ~ * .lang-toggle {
+  color: var(--paper);
 }

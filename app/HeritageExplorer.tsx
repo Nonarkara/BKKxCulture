@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { useLocale } from "./i18n/LocaleContext";
+import type { DictKey } from "./i18n/dictionary";
 
 // Positron: the light counterpart to the atlas's dark base. The register is a
 // reading surface, not an operations console, and it takes the opposite ground.
@@ -82,10 +84,10 @@ type Register = {
 
 type Filter = "all" | "registered" | "walkable";
 
-const FILTERS: { id: Filter; label: string; hint: string }[] = [
-  { id: "all", label: "Every located monument", hint: "Everything with a building-precision position" },
-  { id: "registered", label: "Gazetted only", hint: "Formally registered in the Royal Gazette" },
-  { id: "walkable", label: "Walkable in Minecraft", hint: "Inside a generated BKKx world" },
+const FILTERS: { id: Filter; labelKey: DictKey; hint: string }[] = [
+  { id: "all", labelKey: "filter_all", hint: "Everything with a building-precision position" },
+  { id: "registered", labelKey: "filter_registered", hint: "Formally registered in the Royal Gazette" },
+  { id: "walkable", labelKey: "filter_walkable", hint: "Inside a generated BKKx world" },
 ];
 
 function matches(site: Site, filter: Filter): boolean {
@@ -109,6 +111,7 @@ function locationNote(site: Site): string {
 }
 
 export function HeritageExplorer() {
+  const { t } = useLocale();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const [register, setRegister] = useState<Register | null>(null);
@@ -371,7 +374,7 @@ export function HeritageExplorer() {
                 className={filter === f.id ? "is-active" : undefined}
                 onClick={() => setFilter(f.id)}
               >
-                {f.label}
+                {t(f.labelKey)}
               </button>
             ))}
           </div>

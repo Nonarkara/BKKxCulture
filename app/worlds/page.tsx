@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Walk Bangkok as a playable Minecraft city atlas, from Ratchathewi's transit spine to the historic Chao Phraya riverfront.",
   alternates: { canonical: "/worlds" },
   openGraph: {
-    title: "The Minecraft worlds · BKKx",
+    title: "The Minecraft worlds · BKKxC(ulture)",
     description:
       "Two Bangkok districts generated block by block from open geographic data.",
     url: "/worlds",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "BKKx",
+  name: "BKKxC(ulture)",
   alternateName: "Bangkok, block by block",
   url: "https://bkk.nonarkara.org",
   description:

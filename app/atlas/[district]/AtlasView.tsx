@@ -678,9 +678,10 @@ export function AtlasView({ world, embedded = false, initialView }: Props) {
   return (
     <main className={`atlas-page${embedded ? " is-embedded" : ""}`}>
       {!embedded && <header className="atlas-header">
-        <Link className="wordmark" href="/" aria-label="BKKx home">
+        <Link className="wordmark" href="/" aria-label="BKKxC(ulture) home">
           <span>BKK</span>
           <b>x</b>
+          <em>C(ulture)</em>
         </Link>
         <div className="atlas-header-meta">
           <span className="atlas-eyebrow">
@@ -907,7 +908,7 @@ export function AtlasView({ world, embedded = false, initialView }: Props) {
             </li>
           ))}
         </ol>
-        <Link className="atlas-back" href="/#atlas">← Back to walkthrough</Link>
+        <Link className="atlas-back" href="/worlds#atlas">← Back to walkthrough</Link>
       </aside>}
     </main>
   );

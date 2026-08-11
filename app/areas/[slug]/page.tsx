@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PlaceMasthead } from "../../PlaceMasthead";
 import { PlaceMap } from "../../PlaceMap";
+import { AreaProse, AreaTagline } from "../AreaProse";
+import { MonumentStatus } from "../../walks/MonumentStatus";
 import {
   AREAS,
   areaBySlug,
@@ -27,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: area.tagline,
     alternates: { canonical: `/areas/${area.slug}` },
     openGraph: {
-      title: `${area.name} — Bangkok heritage · BKKx`,
+      title: `${area.name} — Bangkok heritage · BKKxC(ulture)`,
       description: area.tagline,
       url: `/areas/${area.slug}`,
       images: photoFor(area.photo) ? [{ url: photoFor(area.photo)!.file }] : undefined,
@@ -58,7 +60,7 @@ export default async function AreaPage({ params }: Props) {
           {area.name}
           <small lang="th">{area.thai}</small>
         </h1>
-        <p className="place-tagline">{area.tagline}</p>
+        <AreaTagline area={area} />
 
         {photo ? (
           <figure className="register-figure">
@@ -74,11 +76,7 @@ export default async function AreaPage({ params }: Props) {
           </figure>
         ) : null}
 
-        <div className="register-intro">
-          {area.prose.map((p) => (
-            <p key={p.slice(0, 32)}>{p}</p>
-          ))}
-        </div>
+        <AreaProse area={area} />
       </article>
 
       <section className="register-explorer place-page">
@@ -96,7 +94,7 @@ export default async function AreaPage({ params }: Props) {
           Register monuments of the quarter — filled marks are gazetted, hollow marks
           await consideration. Positions from the Fine Arts Department register,
           relocated where needed as documented on the{" "}
-          <Link href="/#register">register page</Link>.
+          <Link href="/heritage#register">register page</Link>.
         </p>
 
         {area.monuments.length ? (
@@ -110,7 +108,9 @@ export default async function AreaPage({ params }: Props) {
                     aria-hidden="true"
                   />
                   <span lang="th">{m.name}</span>
-                  <small>{m.registered ? "gazetted" : "awaiting consideration"}</small>
+                  <small>
+                    <MonumentStatus registered={m.registered} />
+                  </small>
                 </li>
               ))}
             </ul>

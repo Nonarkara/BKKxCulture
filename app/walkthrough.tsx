@@ -51,8 +51,8 @@ export function BangkokWalkthrough() {
   return (
     <main>
       <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="BKKx home">
-          <span>BKK</span><b>x</b>
+        <Link className="wordmark" href="/" aria-label="BKKxC(ulture) home">
+          <span>BKK</span><b>x</b><em>C(ulture)</em>
         </Link>
         <nav aria-label="Primary navigation">
           <Link href="/">Heritage register</Link>
@@ -318,7 +318,7 @@ export function BangkokWalkthrough() {
       </section>
 
       <footer>
-        <a className="wordmark footer-wordmark" href="#top"><span>BKK</span><b>x</b></a>
+        <a className="wordmark footer-wordmark" href="#top"><span>BKK</span><b>x</b><em>C(ulture)</em></a>
         <p>Bangkok, block by block.<br /><span lang="th">กรุงเทพฯ ทีละบล็อก</span></p>
         <div>
           <a href={REPOSITORY} target="_blank" rel="noreferrer">GitHub</a>

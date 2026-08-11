@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "An open 3D atlas of Bangkok's heritage: nine quarters from the royal island to Bang Krachao, 571 registered ancient monuments, and seven documented walks — the culture half of the BKKx pair, alongside the operational city twin at atlas.nonarkara.org.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Bangkok's heritage, block by block · BKKx",
+    title: "Bangkok's heritage, block by block · BKKxC(ulture)",
     description:
       "9 quarters, 7 walks, 571 registered monuments. The 3D map is the front door.",
     url: "https://bkk.nonarkara.org",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "BKKx — Bangkok's heritage, block by block",
+  name: "BKKxC(ulture) — Bangkok's heritage, block by block",
   alternateName: "BKKx",
   url: "https://bkk.nonarkara.org",
   description:

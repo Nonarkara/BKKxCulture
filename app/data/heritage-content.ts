@@ -32,6 +32,8 @@ export type Area = {
   walks: string[];
 };
 
+export type Gazette = { volume: string; part: string; date: string; topic: string };
+
 export type WalkStop = {
   name: string;
   thai: string;
@@ -40,12 +42,27 @@ export type WalkStop = {
   lon: number;
   fad?: string;
   registered?: boolean;
+  gazette?: Gazette;
   locatedBy: string;
   approx?: boolean;
   approxWhy?: string;
   block?: { x: number; z: number };
   world?: string;
   tp?: string;
+  /** Real OSRM leg distance/duration from the previous stop — absent on stop 1. */
+  distanceFromPrevM?: number;
+  durationFromPrevMin?: number;
+};
+
+export type WalkStats = {
+  citedInRegister: number;
+  gazetted: number;
+  awaitingConsideration: number;
+  walkable: number;
+  oldestGazetteYear: number | null;
+  newestGazetteYear: number | null;
+  longestLegM: number | null;
+  shortestLegM: number | null;
 };
 
 export type Walk = {
@@ -57,6 +74,7 @@ export type Walk = {
   areas: string[];
   intro: string;
   stops: WalkStop[];
+  stats: WalkStats;
   distanceM?: number;
   durationMin?: number;
 };
